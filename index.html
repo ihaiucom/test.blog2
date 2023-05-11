@@ -1,0 +1,33 @@
+---
+layout: default
+---
+
+<link rel="stylesheet" href="{{ "/static/css/main.css" | prepend: site.baseurl }}"/>
+<script src="{{ "/static/js/jquery.min.js" | prepend: site.baseurl }}"></script>
+<script src="{{ "/static/js/main.js" | prepend: site.baseurl }}"></script>
+
+<div style="background-color:transparent;">
+
+	<div id="wrapper">
+		<div id="intro" class="main" style="background-color:rgba(220, 220, 220, 0.5);">
+			<!--<img src="/static/jpg/head.jpg" alt=""/>-->
+			<h2 style="font-family: KaiTi;">百哥么么哒</h2>
+			<p style="font:30px 'Alex Brush',cursive;color: #9da4a6;">A data mining engineer who have to<br/>
+				analyze data analyze, mining data mining,learn machine learning,<br/>
+				programming and repair computers.</p>
+		<!--
+		<div style="margin:20px">
+			<marquee direction="left" style="font-family: KaiTi;color: #9da4a6;">不用多久，我就会升职加薪，当上总经理，出任CEO，迎娶白富美，走上人生巅峰|Pretty soon I'll General Manager,be promoted as CEO and marry Bai Fu Mei on the salary increase when pinnacle toward life </marquee>
+		</div>
+		-->
+		
+		</div>
+	</div>
+
+	<div class="container">
+		<div class="col-xs-7 col-sm-7 col-md-9">
+			{% include indexleft.html %}
+		</div>
+		{% include rightmenu.html %}
+	</div>
+</div>

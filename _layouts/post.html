@@ -1,0 +1,147 @@
+---
+layout: default
+---
+
+<!-- 数学公式依赖 -->
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({
+	tex2jax: {
+	  inlineMath: [ ['$','$'], ["\\(","\\)"] ],
+	  processEscapes: true
+	}
+  });
+</script>
+
+<script type="text/x-mathjax-config">
+	MathJax.Hub.Config({
+	  tex2jax: {
+		skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+	  }
+	});
+</script>
+
+<script type="text/x-mathjax-config">
+	MathJax.Hub.Queue(function() {
+		var all = MathJax.Hub.getAllJax(), i;
+		for(i=0; i < all.length; i += 1) {
+			all[i].SourceElement().parentNode.className += ' has-jax';
+		}
+	});
+</script>
+
+<script type="text/javascript"
+   src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+
+<div class="container">
+
+	{% if page.categories[0] == "crawler" or page.categories[0] == "crawlerfirst" or page.categories[0] == "gitblog" or page.categories[0] == "gitblogfirst"%}
+	{% include leftmenu.html %}
+		<div class="col-xs-9 col-sm-9 col-md-10">
+			<div class="page-header" style="background-color: #fff;padding: 20px;border-radius: 4px;">
+				<hr>
+				<h3>{{ page.title }}</a></h3>
+				<small class="text-muted">
+					分类：<i class="fa fa-tag"></i>&nbsp;{{ page.categories[0] }}
+				</small>
+				<h6 class="text-muted"><i class="fa fa-user"></i>&nbsp;{{ page.author }}&nbsp;<i class="fa fa-calendar"></i>&nbsp;{{ page.showdate }}&nbsp;<i class="fa fa-pencil-square"></i>&nbsp;{{content | number_of_words}}&nbsp;<span id="busuanzi_container_page_pv"><i class="fa fa-eye"></i>&nbsp;<span id="busuanzi_value_page_pv"></span></span></h6>
+				<br/>
+				<p class="content text-overflow">
+					{{ content }}
+				</p>
+				
+				<br/>
+				<div style="border: dashed 2px #AEE2D9;padding: 10px;background-color: #EEF3F0;" class="media thumbnail">
+					<span class="icons text-muted">
+						<div class="col-xs-3 col-sm-3 col-md-2">
+							<img alt="Wechat public account" style="display: block; margin-right: auto; margin-left: auto;" class="img-responsive" src="{{ "/static/jpg/follow.jpg" | prepend: site.baseurl }}" />
+						</div>
+						<div class="col-xs-9 col-sm-9 col-md-10" style="font-size:20px">
+							本文地址：<a style="color: #999;" href="{{ page.url }}">http://www.tybai.com{{ page.url }}</a>，来源于<a style="color: #999;" href="/">[TTyb]</a>，欢迎转载，转载请注明出处。
+						</div>
+					</span>
+				</div>
+			</div>
+			
+			<div style="background-color: #fff;padding: 20px;border-radius: 4px;margin-bottom: 20px">
+				<ul class="list-inline" style="font-family: 微软雅黑;text-decoration: none;">
+					{% if page.categories[0] == "crawlerfirst" or page.categories[0] == "gitblogfirst" %}
+					<li class="pull-left"><span style="color:#CCCCCC">上一篇</span></li>
+					{% else %}
+					<li class="pull-left"><a href="{{ page.previous.url }}">← 上一篇：{{ page.previous.title }}</a></li>
+					{% endif %}
+					{% if page.next.categories[0] == "crawler" or page.next.categories[0] == "gitblog"%}
+					<li class="pull-right"><a href="{{ page.next.url }}">下一篇：{{ page.next.title }} →</a></li>
+					{% else %}
+					<li class="pull-right"><span style="color:#CCCCCC">下一篇</span></li>
+					{% endif %}
+				</ul>
+				
+				<br/>
+				<h4 style="font-family: KaiTi">如果你觉得本站内容有帮助<i class="icon fa-hand-o-down" aria-hidden=true></i></h4>
+				<a onclick="dashangToggle()" class="zanzhume" title="喝咖啡" href="javascript:void(0)"><i class="icon fa-rmb"></i>我要请作者喝杯咖啡</a>
+				{% include dashang.html %}
+			</div>
+		</div>
+	{% else %}
+		<div class="col-xs-7 col-sm-7 col-md-9">
+			<div class="page-header" style="background-color: #fff;padding: 20px;border-radius: 4px;">
+				<hr>
+				<h3>{{ page.title }}</a></h3>
+				<small class="text-muted">
+					分类：<i class="fa fa-tag"></i>&nbsp;<a href="{{ "/showCategory.html?cat=" | prepend: site.baseurl }}{{ page.categories[0] }}">{{ page.categories[0] }}</a>
+				</small>
+				<h6 class="text-muted"><i class="fa fa-user"></i>&nbsp;{{ page.author }}&nbsp;<i class="fa fa-calendar"></i>&nbsp;{{ page.date | date: " %Y-%m-%d" }}&nbsp;<i class="fa fa-pencil-square"></i>&nbsp;{{content | number_of_words}}&nbsp;<span id="busuanzi_container_page_pv"><i class="fa fa-eye"></i>&nbsp;<span id="busuanzi_value_page_pv"></span></span></h6>
+				<br/>
+				<p class="content text-overflow">
+					{{ content }}
+				</p>
+				
+				<br/>
+				<div style="border: dashed 2px #AEE2D9;padding: 10px;background-color: #EEF3F0;" class="media thumbnail">
+					<span class="icons text-muted">
+						<div class="col-xs-3 col-sm-3 col-md-2">
+							<img alt="Wechat public account" style="display: block; margin-right: auto; margin-left: auto;" class="img-responsive" src="{{ "/static/jpg/follow.jpg" | prepend: site.baseurl }}" />
+						</div>
+						<div class="col-xs-9 col-sm-9 col-md-10" style="font-size:20px">
+							本文地址：<a style="color: #999;" href="{{ page.url }}">http://www.tybai.com{{ page.url }}</a>，来源于<a style="color: #999;" href="/">[TTyb]</a>，欢迎转载，转载请注明出处。
+						</div>
+					</span>
+				</div>
+				<hr>
+				<h4 style="font-family: KaiTi">如果你觉得本站内容有帮助<i class="icon fa-hand-o-down" aria-hidden=true></i></h4>
+				<a onclick="dashangToggle()" class="zanzhume" title="喝咖啡" href="javascript:void(0)"><i class="icon fa-rmb"></i>我要请作者喝杯咖啡</a>
+			</div>
+		</div>
+	
+    {% include rightmenu.html %}
+	{% endif %}
+	
+	<hr>
+	{% include comment.html %}
+</div>
+
+
+<style>
+.zanzhume{
+    background-color: #00a8e6;
+    border-radius: 4px;
+    color: #fff;
+    display: block;
+    font-family: "KaiTi";
+    line-height: 25px;
+    text-align: center;
+	padding-left: 5px;
+	padding-right: 5px;
+	width: 150px;
+	text-decoration: none;
+    }
+</style>
+
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({tex2jax:{processEscapes: true, inlineMath: [ ['$','$'], ["\\(","\\)"] ], skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']}});
+MathJax.Hub.Config({TeX:{extensions: ["cancel.js", "enclose.js"],
+Macros:{a:"\\alpha",b:"\\beta",c:"\\chi",d:"\\delta",e:"\\epsilon",f:"\\phi",g:"\\gamma",h:"\\eta",i:"\\iota",j:"\\varphi",k:"\\kappa",l:"\\lambda",m:"\\mu",n:"\\nu",o:"\\omicron",p:"\\pi",q:"\\theta",r:"\\rho",s:"\\sigma",t:"\\tau",u:"\\upsilon",v:"\\varpi",w:"\\omega",x:"\\xi",y:"\\psi",z:"\\zeta",D:"\\Delta",F:"\\Phi",G:"\\Gamma",J:"\\vartheta",L:"\\Lambda",P:"\\Pi",Q:"\\Theta",S:"\\Sigma",U:"\\Upsilon",V:"\\varsigma",W:"\\Omega",X:"\\Xi",Y:"\\Psi",ve:"\\varepsilon",vk:"\\varkappa",vq:"\\vartheta",vp:"\\varpi",vr:"\\varrho",vs:"\\varsigma",vf:"\\varphi",alg:"\\begin{align}", ealg:"\\end{align}",bmat:"\\begin{bmatrix}", Bmat:"\\begin{Bmatrix}", pmat:"\\begin{pmatrix}", Pmat:"\\begin{Pmatrix}", vmat:"\\begin{vmatrix}", Vmat:"\\begin{Vmatrix}",ebmat:"\\end{bmatrix}", eBmat:"\\end{Bmatrix}",  epmat:"\\end{pmatrix}",  ePmat:"\\end{Pmatrix}",  evmat:"\\end{vmatrix}",  eVmat:"\\end{Vmatrix}",AA:"\\unicode{x212B}", Sum:"\\sum\\limits", abs:['\\lvert #1\\rvert',1], rmd:['\\mathop{\\mathrm{d}#1}',1],bi:['\\boldsymbol{#1}', 1], obar:['0\\!\\!\\!\\raise{.05em}{-}'],opar:['\\frac{\\partial #1}{\\partial #2}', 2], oppar:['\\frac{\\partial^2 #1}{\\partial #2^2}', 2]}}});
+MathJax.Hub.Queue(function(){
+var all=MathJax.Hub.getAllJax(),i;for(i=0;i<all.length;i+=1){all[i].SourceElement().parentNode.className+=' has-jax';}});
+</script>

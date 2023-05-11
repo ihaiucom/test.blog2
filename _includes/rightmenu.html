@@ -1,0 +1,168 @@
+<div class="col-xs-5 col-sm-5 col-md-3" style="padding: 0">
+<div style="background:#fff;margin:30px 0;border-radius: 4px;border: 1px solid #ddd;padding-left: 15px;padding-right: 15px">
+	<h3 style="font-family: KaiTi;">博客作者</h3>
+	<div>
+		<div style="float:left; clear: both;" align="center">
+			<img src="{{ "/static/jpg/head.jpg" | prepend: site.baseurl }}" style="width: 80%;"/>
+		</div>
+		<p style="align:center;font-family:KaiTi;line-height: 20px;font-size: 13.6px">在<a href="https://baike.baidu.com/item/%E5%B7%B4%E7%94%AB%E6%B4%9B%E5%A4%AB%E5%AE%9A%E5%BE%8B" target="_blank">巴甫洛夫条件反射</a>试验中：给定一条狗，每次摇铃后喂食，足够次数后，狗则听到铃声将会习惯性的分泌唾液，由此引发对铃声的依恋。延伸到实际，给定一个喜欢的妹子，每次见面赠与<a href="https://baike.baidu.com/item/%E5%B7%B4%E7%94%AB%E6%B4%9B%E5%A4%AB%E5%AE%9A%E5%BE%8B" target="_blank">巴甫洛夫式</a>的礼品或者零食，由此引发妹子的依恋。引入<a href="https://baike.baidu.com/item/%E8%96%9B%E5%AE%9A%E8%B0%94%E7%9A%84%E7%8C%AB/554903" target="_blank">薛定谔的猫</a>理论，在未表白前，妹子与自己一直处于一种“概率云”的状态，一旦表白则“概率云”将<span id="showMore" onclick="isHidden('displayContent')">..<b style="cursor:pointer">更多</b></span><span style="display:none;" id="displayContent">消失成为实际。在<a href="https://baike.baidu.com/item/%E5%B7%B4%E7%94%AB%E6%B4%9B%E5%A4%AB%E5%AE%9A%E5%BE%8B" target="_blank">巴甫洛夫式</a>后且未表白前，自己与妹子的关系为“既是恋人又不是恋人”的矛盾体。返回<a href="https://baike.baidu.com/item/%E5%B7%B4%E7%94%AB%E6%B4%9B%E5%A4%AB%E5%AE%9A%E5%BE%8B" target="_blank">巴甫洛夫式</a>试验中，在妹纸形成足够的依恋过后，则可以打破<a href="https://baike.baidu.com/item/%E8%96%9B%E5%AE%9A%E8%B0%94%E7%9A%84%E7%8C%AB/554903" target="_blank">薛定谔</a>“概率云”的状态。这个谜一样的自己，这一刻<a href="https://baike.baidu.com/item/%E8%96%9B%E5%AE%9A%E8%B0%94%E7%9A%84%E7%8C%AB/554903" target="_blank">薛定谔</a>附体，带着量子论般深沉的哀愁，让她从此不能自拔! 自此创作<strong><i>巴甫洛夫薛定谔把妹法</i></strong>，深藏功与名。</span></p>
+	</div>
+
+    <div style="text-align: center;">
+		<ul class="list-inline">
+			<li><a onclick="dashangToggle()" class="contactme" title="打赏作者" style="text-decoration:none;" href="javascript:void(0)">打赏</a></li>
+			<li>
+				<a class="contactme" title="关注公众号" style="text-decoration:none;" href="/contact">关注</a>
+			</li>
+			<li><a class="contactme" title="给作者留言" style="text-decoration:none;" href="/guestbook">留言</a></li>
+		</ul>
+    </div>
+</div>
+
+<div style="background:#fff;margin:30px 0;border-radius: 4px;border: 1px solid #ddd;padding-left: 15px;padding-right: 15px">
+	<div style="clear:both;">
+    <h3 style="font-family: KaiTi;">微信公众号</h3>
+    </div>
+	<p style="font-family:KaiTi;line-height: 20px;font-size: 13.6px;margin-bottom:0px;text-align:center;color:#FF0000">爬虫代码不知道怎么写<br>关注公众号让作者帮你解决！</p>
+	
+	<div style="margin-bottom: 10px;">
+		<img class="img-responsive" src="{{ "/static/jpg/follow.jpg" | prepend: site.baseurl }}" alt=""/>
+	</div>
+</div>
+
+<div style="background:#fff;margin:30px 0;border-radius: 4px;border: 1px solid #ddd;padding-left: 15px;padding-right: 15px">
+	<div style="clear:both;">
+		<h3 style="font-family: KaiTi;">博客标签</h3>
+		<div>
+			{% for category in site.categories %}
+			{% if category[0] == "crawler" or category[0] == "crawlerfirst" or category[0] == "gitblog" or category[0] == "gitblogfirst"%}
+			{% else %}
+			<a class="tags" style="text-decoration:none;" href="{{ "/showCategory.html?cat=" | prepend: site.baseurl }}{{ category | first }}">{{ category | first }}({{ category | last | size }})</a>
+			{% endif %}
+			{% endfor %}
+		</div>
+	</div>
+</div>
+
+<div style="background:#fff;margin:30px 0;border-radius: 4px;border: 1px solid #ddd;padding-left: 15px;padding-right: 15px">
+	<div style="clear:both;">
+    <h3 style="font-family: KaiTi;">博客热点</h3>
+    </div>
+	{% include news.html %}
+</div>
+
+<div style="background:#fff;margin:30px 0;border-radius: 4px;border: 1px solid #ddd;padding-left: 15px;padding-right: 15px">
+	<div style="clear:both;">
+		<h3 style="font-family: KaiTi;">博客归档</h3>
+		<table class="table table-striped">
+		{% assign cYear = "" %}
+		{% assign cMonth = "" %}
+		{% assign posts = site.posts | sort: 'date' | reverse %}
+		{% assign cMonthName = "" %}
+		{% assign count = 0 %}
+
+		{% for post in posts %}
+			{% assign count = count | plus: 1 %}
+			{% capture year %}{{post.date | date:"%Y"}}{% endcapture %}
+			{% capture month %}{{post.date | date:"%m"}}{% endcapture %}
+			
+			{% if year != cYear %}
+				{% if cYear != "" %}
+					<tr>
+						<th>
+							<a href="{{ "/archive.html?date=" | prepend: site.baseurl }}{{ cMonthLink }}" style="text-decoration:none;">
+								<span class="badge" style="background-color: #1bb3e9;color: #fff;font-size: 12px;">{{count | minus: 1}}</span>
+								<span style="color: #1bb3e9;font-size: 12px;">{{cMonthName}}<span>
+							</a>
+						</th>
+					</tr>
+					{% assign count = 1 %}
+				{% endif %}
+				{% assign cMonth = "" %}
+				{% assign cYear = year %}
+			{% endif %}
+
+			{% if month != cMonth %}
+				{% if cMonth != "" %}
+					<tr>
+						<th>
+							<a href="{{ "/archive.html?date=" | prepend: site.baseurl }}{{ cMonthLink }}" style="text-decoration:none;">
+								<span class="badge" style="background-color: #1bb3e9;color: #fff;font-size: 12px;">{{count | minus: 1}}</span>
+								<span style="color: #1bb3e9;font-size: 12px;">{{cMonthName}}<span>
+							</a>
+						</th>
+					</tr>
+					{% assign count = 1 %}
+				{% endif %}
+			{% assign cMonth = month %}
+			{% endif %}
+			
+			{% assign cMonthName = post.date | date:'%B %Y' %}
+			{% assign cMonthLink = post.date | date: '%Y/%m' %}
+		{% endfor %}
+		<tr>
+			<th>
+				<a href="{{ "/archive.html?date=" | prepend: site.baseurl }}{{ cMonthLink }}" style="text-decoration:none;">
+					<span class="badge" style="background-color: #1bb3e9;color: #fff;font-size: 12px;">{{count}}</span>
+					<span style="color: #1bb3e9;font-size: 12px;">{{cMonthName}}<span>
+				</a>
+			</th>
+		</tr>
+		</table>
+
+	</div>
+</div>
+
+<div style="background:#fff;margin:30px 0;border-radius: 4px;border: 1px solid #ddd;padding-left: 15px;padding-right: 15px">
+	<div style="clear:both;">
+    <h3 style="font-family: KaiTi;">博主梦想</h3>
+    </div>
+	
+	<div style="margin-bottom: 10px;">
+		<img src="{{ "/static/jpg/wangdachui.gif" | prepend: site.baseurl }}" alt=""/>
+	</div>
+</div>
+
+<div style="background:#fff;margin:30px 0;border-radius: 4px;border: 1px solid #ddd;padding-left: 15px;padding-right: 15px">
+    <div style="clear:both;">
+    <h3 style="font-family: KaiTi;">博客日历</h3>
+    </div>
+	{% include date.html %}
+</div>
+
+</div>
+<style>
+.contactme{
+    border-radius: 4px;
+	border: 1px solid #1bb3e9;
+    color: #1bb3e9;
+    display: block;
+    font-family: "KaiTi";
+    line-height: 25px;
+    text-align: center;
+	padding-left: 20px;
+	padding-right: 20px;
+}
+
+.tags {
+	border: 1px solid #1bb3e9;
+    border-radius: 3px;
+    margin-bottom: 0.2rem;
+    padding: 5px;
+    text-transform: uppercase;
+	line-height: 35px;
+	font-size: 12px;
+    text-align: center;
+	color: #1bb3e9;
+}
+</style>
+
+<SCRIPT>
+function isHidden(oDiv){
+  var vDiv = document.getElementById(oDiv);
+  vDiv.style.display = (vDiv.style.display == 'none')?'inline':'none';
+  showMore.style.display = 'none';
+}
+</SCRIPT>
+
+{% include dashang.html %}

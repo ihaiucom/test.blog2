@@ -1,0 +1,13 @@
+baseurl: "https://ihaiucom.github.io/test.blog2/"
+url: "https://ihaiucom.github.io/test.blog2/"
+encoding: utf-8
+
+markdown: kramdown
+kramdown:
+  syntax_highlighter: rouge
+
+permalink: /:categories/:title.html
+
+gems: [jekyll-paginate]
+paginate: 8
+paginate_path: "page:num"

@@ -1,0 +1,86 @@
+---
+layout: default
+---
+
+<style>
+    .text-overflow {
+        display: block;
+        width: 90%;
+        word-break: keep-all;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+    }
+	.tag {
+		background: url({{ "/static/jpg/tag.png" | prepend: site.baseurl }}) no-repeat left center;
+		padding-left: 20px;
+		margin: 0 10px 0 0;
+		}
+		
+	.timet {
+		background: url({{ "/static/jpg/time.png" | prepend: site.baseurl }}) no-repeat left center;
+		padding-left: 20px;
+		margin: 0 10px 0 0;
+		}
+		
+	.topicc {
+		background: url({{ "/static/jpg/wenzhang.gif" | prepend: site.baseurl }}) no-repeat left center;
+		padding-left: 20px;
+		margin: 0 10px 0 0;
+		}
+</style>
+
+<div class="container">
+	<h1 style="background-image:linear-gradient(90deg, #f79533 0px, #f37055 15%, #ef4e7b 30%, #a166ab 44%, #5073b8 58%, #1098ad 72%, #07b39b 86%, #6dba82 100%);border-radius: 4px;color: #fff">
+		分类列表
+	</h1>
+	<div class="col-xs-3 col-sm-3 col-md-2" style="border-right: 1px solid #ddd;border-radius: 4px;">
+		<ul class="list-group">
+			{% for category in site.categories %}
+			{% if category[0] == "crawler" or category[0] == "crawlerfirst" or category[0] == "gitblog" or category[0] == "gitblogfirst" %}
+			{% else %}
+			<a href="{{ "/showCategory.html?cat=" | prepend: site.baseurl }}{{ category | first }}" class="list-group-item">
+				{{ post.title }}{{ category | first }}
+				<span class="badge" style="background-color: #FF8C00">{{ category | last | size }}</span>
+			</a>
+			{% endif %}
+			{% endfor %}
+		</ul>
+	</div>
+
+	<div class="col-xs-4 col-sm-4 col-md-7">
+		<div class="page-header">
+			<div id="yy">
+
+			</div>
+		</div>
+	</div>
+
+    {% include rightmenu.html %}
+</div>
+
+
+<script type="text/javascript" src="{{ "/static/js/jquery.q.js" | prepend: site.baseurl }}"></script>
+
+<script>
+    (function () {
+        var dataStr = '{ {% for cat in site.categories %}{% if cat[0] != site.categories.first[0] %},{% endif %}"{{ cat[0] }}":[{% for post in cat[1] %}{% if post != cat[1].first %},{% endif %}{% for category in post.categories %}{"desc":"{{post.desc}}","category":"{{ category }}","author":"{{post.author}}","url":"{{post.url | prepend: site.baseurl}}", "title":"{{post.title}}", "date":"{{post.date | date:"%Y-%m-%d"}}"}{% endfor %}{% endfor %}]{% endfor %} }';
+        data = JSON.parse(dataStr);
+        curTag = $.query.get("cat");
+        archieves = data[curTag];
+        var k = '';
+        for (i in archieves) {
+            var aaa = "<div class='media thumbnail' style='padding: 15px'>";
+            aaa += "<h3><a href = '" + archieves[i]['url'] + "' > " + archieves[i]['title'] + "</a></h3>";
+            aaa += "<small class='text-muted'>分类：<i class='fa fa-tag'></i>&nbsp;" + archieves[i]['category'] + "</small>";
+            aaa += "<h6 class='text-muted'><i class='fa fa-user'></i>&nbsp;" + archieves[i]['author'] + "&nbsp;<i class='fa fa-calendar'></i>&nbsp;" + archieves[i]['date'];
+            aaa += "</h6><div>";
+            aaa += "<p class='content text-overflow'>" + archieves[i]['desc'] + "</p><h5><span class='topicc'><a href='" + archieves[i]['url'] + "'>阅读全文 »</a></span></h5><p></p></div></div>";
+            k += aaa;
+        }
+        var div = document.getElementById("yy");
+        div.innerHTML = k;
+    })();
+
+</script>
+
